@@ -140,9 +140,10 @@ async def start(context):
     else:
         bot.loop.create_task(game.start())
         await bot.say("A game is open to join! Type !join to join!")
-        
+
+# Resets all channel override permissions
 @bot.command(pass_context=True)
-async def reset(context):
+async def resetchannelperms(context):
     for channel in context.server.channels:
           for target in channel.overwrites:
             await bot.delete_channel_permission(channel, target)
